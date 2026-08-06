@@ -24,8 +24,5 @@ dist-isolation
 *.sln
 *.sw?
 
-# Environment Variables (never commit secrets!)
-.env
-
 # Test/scratch files
 test_click.py
