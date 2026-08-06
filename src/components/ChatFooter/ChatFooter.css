@@ -1,0 +1,26 @@
+/* ═══════════════════════════════════════════════════════
+   ChatFooter — MINIMAL GLASS FOOTER
+   ═══════════════════════════════════════════════════════ */
+
+.chat-footer {
+  flex-shrink: 0;
+  padding: clamp(6px, 1vh, 10px) clamp(16px, 3vw, 24px);
+  border-top: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(10.5px, 1.1vw, 11.5px);
+  color: #71717a;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  gap: 6px;
+  letter-spacing: 0.02em;
+  font-weight: 500;
+}
+
+[data-theme="light"] .chat-footer {
+  background: transparent;
+  border-top: none;
+  color: #94a3b8;
+}

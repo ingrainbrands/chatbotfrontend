@@ -1,0 +1,93 @@
+/* ═══════════════════════════════════════════════════════
+   Design Tokens — Premium Dark / Light Glassmorphism System
+   Inspired by Linear, Claude & ChatGPT
+   ═══════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* ── Primary Accent Colors ────────────────── */
+  --accent:           #2563eb;
+  --accent-hover:     #3b82f6;
+  --accent-active:    #1d4ed8;
+  --accent-glow:      rgba(37, 99, 235, 0.35);
+  --accent-subtle:    rgba(37, 99, 235, 0.12);
+  --accent-text:      #ffffff;
+
+  /* ── Dark Mode Colors ────────────── */
+  --bg:               #050508;
+  --surface:          #050508;
+  --surface-glass:    rgba(18, 18, 24, 0.72);
+  --surface-hover:    rgba(255, 255, 255, 0.06);
+  --surface-active:   rgba(255, 255, 255, 0.10);
+
+  /* ── Text Hierarchy ────────────────────────── */
+  --text-1:           #f4f4f5;
+  --text-2:           #d4d4d8;
+  --text-3:           #9ca3af;
+  --text-muted:       #6b7280;
+
+  /* ── Border & Glass Highlights ─────────────── */
+  --border:           rgba(255, 255, 255, 0.08);
+  --border-subtle:    rgba(255, 255, 255, 0.05);
+  --border-highlight: rgba(255, 255, 255, 0.16);
+  --border-focus:     rgba(59, 130, 246, 0.6);
+
+  /* ── Glassmorphism Effects ─────────────────── */
+  --glass-bg:         rgba(15, 15, 20, 0.70);
+  --glass-border:     rgba(255, 255, 255, 0.10);
+  --glass-blur:       blur(20px) saturate(180%);
+  --glass-shadow:     0 8px 32px 0 rgba(0, 0, 0, 0.45);
+
+  /* ── Radii ───────────────────────── */
+  --r-xs:   6px;
+  --r-sm:   10px;
+  --r-md:   14px;
+  --r-lg:   18px;
+  --r-xl:   24px;
+  --r-full: 9999px;
+
+  /* ── Typography Stack ─── */
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'Fira Code', 'SF Mono', Consolas, monospace;
+
+  /* ── Transitions ─────────────────── */
+  --t-fast: 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  --t:      0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  --t-slow: 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ── Status Colors ───────────────── */
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --error:   #ef4444;
+}
+
+/* ── Explicit Dark Mode ─────── */
+[data-theme="dark"] {
+  --bg:               #050508;
+  --surface:          #050508;
+  --surface-glass:    rgba(18, 18, 24, 0.72);
+  --surface-hover:    rgba(255, 255, 255, 0.06);
+  --text-1:           #f4f4f5;
+  --text-2:           #d4d4d8;
+  --text-3:           #9ca3af;
+  --border:           rgba(255, 255, 255, 0.08);
+}
+
+/* ── Explicit Light Mode ─────── */
+[data-theme="light"] {
+  --bg:               #f8fafc;
+  --surface:          #ffffff;
+  --surface-glass:    rgba(255, 255, 255, 0.80);
+  --surface-hover:    rgba(0, 0, 0, 0.04);
+  --text-1:           #0f172a;
+  --text-2:           #334155;
+  --text-3:           #64748b;
+  --text-muted:       #94a3b8;
+  --border:           rgba(0, 0, 0, 0.08);
+  --border-subtle:    rgba(0, 0, 0, 0.04);
+  --border-highlight: rgba(0, 0, 0, 0.14);
+  --glass-bg:         rgba(255, 255, 255, 0.78);
+  --glass-border:     rgba(0, 0, 0, 0.08);
+  --glass-shadow:     0 8px 32px 0 rgba(0, 0, 0, 0.08);
+}

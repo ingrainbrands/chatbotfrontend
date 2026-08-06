@@ -1,0 +1,65 @@
+/* ═══════════════════════════════════════════════════════
+   ChatBody — TRANSPARENT MESSAGE CONTAINER & GLASS INPUT BAR
+   ═══════════════════════════════════════════════════════ */
+
+.chat-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: transparent;
+  position: relative;
+  z-index: 1;
+  min-height: 0; /* Allows flex child to shrink below content size */
+}
+
+/* ── Message scroll area ── */
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: clamp(12px, 3vw, 28px) clamp(16px, 4vw, 36px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 1.8vh, 18px);
+  width: 100%;
+  max-width: 880px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+  background: transparent;
+  /* Smooth momentum scroll on iOS */
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+/* ── Chat input area bar ── */
+.chat-input-area {
+  flex-shrink: 0;
+  padding: 10px clamp(16px, 4vw, 36px) 16px;
+  background: transparent;
+  width: 100%;
+  max-width: 880px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Light mode ── */
+[data-theme="light"] .chat-input-area {
+  background: transparent;
+}
+
+
+/* ── Mobile adjustments ── */
+@media (max-width: 480px) {
+  .chat-messages {
+    padding: 10px 12px;
+    gap: 10px;
+  }
+  .chat-input-area {
+    padding: 6px 12px 10px;
+  }
+}

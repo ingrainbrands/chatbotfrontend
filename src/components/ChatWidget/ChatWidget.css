@@ -1,0 +1,134 @@
+/* ═══════════════════════════════════════════════════════
+   Chat Widget — FULLSCREEN, AMBIENT LIGHTING & WATERMARK
+   ═══════════════════════════════════════════════════════ */
+
+/* ── Force complete fullscreen on ALL devices ── */
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  min-height: 100svh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: var(--bg, #050508);
+}
+
+.chat-widget {
+  position: fixed;           /* Fixed cover full viewport */
+  inset: 0;                  /* top:0 right:0 bottom:0 left:0 */
+  width: 100vw;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg, #050508);
+  color: var(--text-1, #f4f4f5);
+  overflow: hidden;
+}
+
+/* ── Subtle animated ambient mesh gradient ── */
+.chat-widget::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 65% 55% at 15% 10%, rgba(37, 99, 235, 0.14) 0%, transparent 65%),
+    radial-gradient(ellipse 60% 65% at 85% 90%, rgba(139, 92, 246, 0.10) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 50% at 50% 50%, rgba(20, 184, 166, 0.05) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+  animation: meshShift 20s ease-in-out infinite alternate;
+}
+
+@keyframes meshShift {
+  0%   { opacity: 0.6; transform: scale(1); }
+  50%  { opacity: 0.95; transform: scale(1.03); }
+  100% { opacity: 0.6; transform: scale(1); }
+}
+
+/* ═══════════════════════════════════════════════════════
+   Background Logo Watermark — CLEAR & VISIBLE IN BOTH MODES
+   ═══════════════════════════════════════════════════════ */
+.chat-bg-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(240px, 42vmin, 580px);
+  height: clamp(240px, 42vmin, 580px);
+  opacity: 0.06;                   /* Dark mode subtle opacity */
+  pointer-events: none;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  transition: opacity 0.3s ease;
+}
+
+.chat-bg-watermark img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(1.1) contrast(1.05);
+}
+
+/* ── Light mode Logo Fix ── */
+[data-theme="light"] .chat-widget {
+  background: #f8fafc;
+}
+
+[data-theme="light"] .chat-widget::before {
+  background:
+    radial-gradient(ellipse 60% 55% at 12% 6%,  rgba(37, 99, 235, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 55% 60% at 88% 92%,  rgba(139, 92, 246, 0.06) 0%, transparent 60%);
+}
+
+[data-theme="light"] .chat-bg-watermark {
+  opacity: 0.08;                   /* Light mode subtle opacity */
+}
+
+[data-theme="light"] .chat-bg-watermark img {
+  filter: invert(1) brightness(0.2) contrast(1.2);
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   Responsive Breakpoints
+   ═══════════════════════════════════════════════════════ */
+
+/* ── Large desktop (1440px+) ── */
+@media (min-width: 1440px) {
+  .chat-bg-watermark {
+    width: clamp(440px, 42vmin, 720px);
+    height: clamp(440px, 42vmin, 720px);
+    opacity: 0.26;
+  }
+  [data-theme="light"] .chat-bg-watermark {
+    opacity: 0.22;
+  }
+}
+
+/* ── Tablet landscape (768px – 1024px) ── */
+@media (max-width: 1024px) {
+  .chat-bg-watermark {
+    width: clamp(260px, 52vmin, 540px);
+    height: clamp(260px, 52vmin, 540px);
+    opacity: 0.22;
+  }
+  [data-theme="light"] .chat-bg-watermark {
+    opacity: 0.18;
+  }
+}
+
+/* ── Mobile portrait (≤ 480px) ── */
+@media (max-width: 480px) {
+  .chat-bg-watermark {
+    width: clamp(200px, 64vmin, 360px);
+    height: clamp(200px, 64vmin, 360px);
+    opacity: 0.25;
+  }
+  [data-theme="light"] .chat-bg-watermark {
+    opacity: 0.30;
+  }
+}

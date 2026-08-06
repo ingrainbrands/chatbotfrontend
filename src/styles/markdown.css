@@ -1,0 +1,202 @@
+/* ── Markdown Root - Dark Theme ─────────────────── */
+.markdown {
+  color: inherit;
+  font-size: clamp(13px, 1.4vw, 15px);
+  line-height: 1.7;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+}
+
+.markdown>*:first-child {
+  margin-top: 0;
+}
+
+.markdown>*:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Headings ─────────── */
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6 {
+  margin: .9rem 0 .5rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text-1, #ffffff);
+  /* Bug fix: was hard-coded #ffffff, broke light mode */
+}
+
+.markdown h1 {
+  font-size: 1.4rem;
+}
+
+.markdown h2 {
+  font-size: 1.2rem;
+}
+
+.markdown h3 {
+  font-size: 1.05rem;
+}
+
+.markdown h4,
+.markdown h5,
+.markdown h6 {
+  font-size: 0.95rem;
+}
+
+/* ── Paragraph ─────────── */
+.markdown p {
+  margin: .65rem 0;
+}
+
+/* ── Links ─────────────── */
+.markdown a,
+.chat-link {
+  color: #60a5fa;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(96, 165, 250, 0.3);
+  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  border-radius: 3px;
+  padding: 0 2px;
+  text-decoration: none;
+}
+
+.markdown a:hover,
+.chat-link:hover {
+  color: #93c5fd;
+  border-color: #93c5fd;
+  background: rgba(96, 165, 250, 0.08);
+}
+
+/* Light mode link adjustments */
+[data-theme="light"] .markdown a,
+[data-theme="light"] .chat-link {
+  color: #2563eb;
+  border-bottom-color: rgba(37, 99, 235, 0.3);
+}
+
+[data-theme="light"] .markdown a:hover,
+[data-theme="light"] .chat-link:hover {
+  color: #1d4ed8;
+  border-color: #1d4ed8;
+  background: rgba(37, 99, 235, 0.06);
+}
+
+/* ── Lists ─────────────── */
+.markdown ul,
+.markdown ol {
+  margin: .6rem 0;
+  padding-left: 1.4rem;
+}
+
+.markdown ul {
+  list-style: disc;
+}
+
+.markdown ol {
+  list-style: decimal;
+}
+
+.markdown li {
+  margin: .25rem 0;
+}
+
+/* ── Blockquote ──────────── */
+.markdown blockquote {
+  margin: .8rem 0;
+  padding: .75rem 1rem;
+  border-left: 3px solid #3b82f6;
+  background: rgba(59, 130, 246, 0.1);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  color: #d4d4d8;
+}
+
+/* ── Inline code ─────────── */
+.markdown code {
+  font-family: 'Fira Code', Consolas, monospace;
+  font-size: .87em;
+  background: #18181b;
+  color: #38bdf8;
+  padding: 2px 6px;
+  border-radius: var(--r-xs);
+  border: 1px solid #27272a;
+}
+
+/* ── Code block ─────────── */
+.markdown pre {
+  margin: .8rem 0;
+  padding: 14px 16px;
+  background: #09090b;
+  color: #f4f4f5;
+  border: 1px solid #27272a;
+  border-radius: var(--r-md);
+  overflow-x: auto;
+  font-size: .85rem;
+  line-height: 1.65;
+}
+
+.markdown pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+  border: none;
+  font-size: inherit;
+}
+
+/* ── Table ─────────────── */
+.markdown table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: .8rem 0;
+  font-size: var(--font-sm);
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  border: 1px solid #27272a;
+  display: block;
+  overflow-x: auto;
+}
+
+.markdown th {
+  background: #141417;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid #27272a;
+}
+
+.markdown td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #27272a;
+  color: #d4d4d8;
+}
+
+.markdown tr:last-child td {
+  border-bottom: none;
+}
+
+.markdown tr:nth-child(even) td {
+  background: #09090b;
+}
+
+/* ── HR ──────────────────── */
+.markdown hr {
+  margin: 1.2rem 0;
+  border: none;
+  height: 1px;
+  background: #27272a;
+}
+
+/* ── Bold / Italic ────────── */
+.markdown strong {
+  font-weight: 700;
+  color: var(--text-1, #ffffff);
+}
+
+/* Bug fix: was #ffffff */
+.markdown em {
+  font-style: italic;
+}

@@ -1,0 +1,48 @@
+.shortcut-link-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  border-radius: 20px;
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(37, 99, 235, 0.05);
+}
+
+.shortcut-link-pill:hover {
+  background: #2563eb;
+  color: #ffffff;
+  border-color: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.shortcut-icon {
+  flex-shrink: 0;
+  color: currentColor;
+}
+
+.shortcut-label {
+  white-space: nowrap;
+}
+
+.shortcut-ext {
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+[data-theme="dark"] .shortcut-link-pill {
+  background: rgba(59, 130, 246, 0.15);
+  border-color: rgba(59, 130, 246, 0.3);
+  color: #60a5fa;
+}
+
+[data-theme="dark"] .shortcut-link-pill:hover {
+  background: #3b82f6;
+  color: #ffffff;
+}
