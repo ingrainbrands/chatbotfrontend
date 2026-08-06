@@ -3,19 +3,23 @@
    ═══════════════════════════════════════════════════════ */
 
 .chat-body {
+  /* Fills all remaining height below the sticky header.
+     flex:1 + min-height:0 is the correct pattern — without min-height:0
+     the browser uses content size as minimum, causing overflow. */
   flex: 1;
+  min-height: 0;
   display: flex;
   flex-direction: column;
   overflow: hidden;
   background: transparent;
   position: relative;
   z-index: 1;
-  min-height: 0; /* Allows flex child to shrink below content size */
 }
 
 /* ── Message scroll area ── */
 .chat-messages {
   flex: 1;
+  min-height: 0;              /* Must match parent pattern */
   overflow-y: auto;
   overflow-x: hidden;
   padding: clamp(12px, 3vw, 28px) clamp(16px, 4vw, 36px);
@@ -29,9 +33,12 @@
   position: relative;
   z-index: 1;
   background: transparent;
-  /* Smooth momentum scroll on iOS */
+  /* Smooth momentum scroll on iOS — prevents rubber-band scroll from
+     pulling content behind the header */
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
+  /* Ensure last message is never hidden behind the input bar */
+  scroll-padding-bottom: 16px;
 }
 
 /* ── Chat input area bar ── */
@@ -58,8 +65,12 @@
   .chat-messages {
     padding: 10px 12px;
     gap: 10px;
+    /* Keep last message visible above the input bar on small screens */
+    padding-bottom: max(16px, env(safe-area-inset-bottom, 0px));
   }
   .chat-input-area {
-    padding: 6px 12px 10px;
+    padding: 6px 12px;
+    /* Push above home-indicator on notched iPhones */
+    padding-bottom: max(10px, env(safe-area-inset-bottom, 0px));
   }
 }

@@ -127,13 +127,14 @@ const MessageBubble = ({ message }) => {
   const handleCopy = useCallback(async () => {
     if (!message?.content) return;
     try {
-      await navigator.clipboard.writeText(message.content);
+      // Use shared helper — has textarea execCommand fallback for HTTP/non-secure devices
+      await copyToClipboard(message.content);
       setCopied(true);
-      // Fix: clear previous timer before setting new one
+      // Clear previous timer before setting new one
       if (copyTimerRef.current) clearTimeout(copyTimerRef.current);
       copyTimerRef.current = setTimeout(() => setCopied(false), 1800);
     } catch {
-      // clipboard API may fail in non-secure context / Safari
+      // Silently ignore if all methods fail
     }
   }, [message?.content]);
 

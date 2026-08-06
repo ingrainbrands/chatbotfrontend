@@ -24,5 +24,9 @@ dist-isolation
 *.sln
 *.sw?
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> f43624a (Update frontend UI layout, mobile scrolling, copy button fallback, and responsive styling)
 # Test/scratch files
 test_click.py

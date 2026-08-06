@@ -1,19 +1,14 @@
-/* ── Reset & Base ───────────────────────────────── */
+/* ── Reset & Base ──────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html {
+/* html / body / #root base — full sizing defined in ChatWidget.css
+   to avoid specificity conflicts with dvh / overflow. */
+html, body, #root {
   width: 100%;
   height: 100%;
-  height: 100dvh;
-  overflow: hidden;
 }
 
 body {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
   background-color: #000000;
   color: #ffffff;
   font-family: var(--font);
@@ -21,14 +16,8 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Prevent zoom on iOS when tapping inputs */
+  /* Prevent auto-zoom on iOS when tapping inputs */
   -webkit-text-size-adjust: 100%;
-}
-
-#root {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
 }
 
 /* ── Chat App Wrapper (full bleed) ─── */
@@ -102,12 +91,11 @@ a { color: inherit; text-decoration: none; }
   40%           { transform: translateY(-5px); opacity: 1; }
 }
 
-/* ── Safe area insets (notched phones) ─────────────── */
+/* ── Safe area insets (notched phones) ───────────────── */
+/* Handled inline in ChatBody.css and ChatHeader.css for component-level
+   precision. This fallback covers any other footer/input components. */
 @supports (padding-bottom: env(safe-area-inset-bottom)) {
   .chat-footer {
     padding-bottom: max(8px, env(safe-area-inset-bottom));
-  }
-  .chat-input-area {
-    padding-bottom: max(10px, env(safe-area-inset-bottom));
   }
 }

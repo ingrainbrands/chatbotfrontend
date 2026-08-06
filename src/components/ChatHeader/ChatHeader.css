@@ -3,8 +3,16 @@
    Linear / ChatGPT Style
    ═══════════════════════════════════════════════════════ */
 
+/* CSS variable — consumed by ChatBody to guarantee correct top offset */
+:root {
+  --header-h: clamp(52px, 7vh, 64px);
+}
+
 .chat-header {
-  height: clamp(52px, 7vh, 64px);
+  height: var(--header-h);
+  /* sticky keeps the header in the flex column but never scrolls away */
+  position: sticky;
+  top: 0;
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -14,8 +22,7 @@
   background: rgba(8, 8, 12, 0.65);
   backdrop-filter: blur(24px) saturate(180%);
   -webkit-backdrop-filter: blur(24px) saturate(180%);
-  position: relative;
-  z-index: 10;
+  z-index: 100;
   box-sizing: border-box;
 }
 
@@ -149,11 +156,31 @@
 
 /* ── Mobile ── */
 @media (max-width: 480px) {
+  :root {
+    --header-h: 52px;
+  }
+
   .chat-header {
     padding: 0 14px;
+    /* Solid background on mobile — prevents content bleeding through
+       when suggestions panel or messages scroll behind the header */
+    background: rgba(5, 5, 8, 0.97);
+    backdrop-filter: blur(12px) saturate(160%);
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
+    /* Respect notch / status-bar on iOS */
+    padding-top: env(safe-area-inset-top, 0px);
+    height: calc(var(--header-h) + env(safe-area-inset-top, 0px));
   }
+
   .hdr-btn {
     width: 32px;
     height: 32px;
+  }
+}
+
+/* ── Light mode mobile ── */
+@media (max-width: 480px) {
+  [data-theme="light"] .chat-header {
+    background: rgba(248, 250, 252, 0.97);
   }
 }
