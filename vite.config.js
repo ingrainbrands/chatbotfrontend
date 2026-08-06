@@ -9,32 +9,32 @@ export default defineConfig({
     proxy: {
       // Proxy all /chat, /health, /status, /crawl requests to the backend
       '/chat': {
-        target: 'http://localhost:8000',
+        target: 'https://apichatbot.iryax.com',
         changeOrigin: true,
         secure: false,
       },
       '/health': {
-        target: 'http://localhost:8000',
+        target: 'https://apichatbot.iryax.com',
         changeOrigin: true,
         secure: false,
       },
       '/status': {
-        target: 'http://localhost:8000',
+        target: 'https://apichatbot.iryax.com',
         changeOrigin: true,
         secure: false,
       },
       '/crawl': {
-        target: 'http://localhost:8000',
+        target: 'https://apichatbot.iryax.com',
         changeOrigin: true,
         secure: false,
       },
       '/sources': {
-        target: 'http://localhost:8000',
+        target: 'https://apichatbot.iryax.com',
         changeOrigin: true,
         secure: false,
       },
       '/feedback': {
-        target: 'http://localhost:8000',
+        target: 'https://apichatbot.iryax.com',
         changeOrigin: true,
         secure: false,
       },
